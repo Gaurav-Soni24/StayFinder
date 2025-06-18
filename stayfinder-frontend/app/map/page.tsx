@@ -5,10 +5,17 @@ const MapComponent = dynamic(() => import("./MapComponent"), {
 });
 
 export default function MapPage() {
-  return <MapComponent />;
-      </div>
-      <Separator className="mb-4 sm:mb-6" />
+  // You may need to define or import these variables/hooks properly in your actual code
+  // Example placeholders for missing variables
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [selectedListing, setSelectedListing] = React.useState(null);
+  const filteredListings = [];
+  const handleMarkerClick = (listing) => setSelectedListing(listing);
 
+  return (
+    <>
+      <MapComponent />
+      <Separator className="mb-4 sm:mb-6" />
       <div className="relative flex flex-col gap-4 sm:gap-6 lg:flex-row">
         {/* Listings Sidebar (responsive) */}
         <div
@@ -44,4 +51,18 @@ export default function MapPage() {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
+                      {/* Add additional listing info here */}
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div>No properties found.</div>
+            )}
+          </div>
+        </div>
+        {/* Add additional components (e.g., map, details) here if needed */}
+      </div>
+    </>
+  );
 }
