@@ -45,7 +45,7 @@ export default function RegisterPage() {
       await registerUser(values.name, values.email, values.password)
       localStorage.setItem("isLoggedIn", "true")
       toast.success("Registration successful!")
-      router.push("/")
+      router.push("/dashboard")
     } catch (error) {
       toast.error("Registration failed. Please try again.")
     } finally {
