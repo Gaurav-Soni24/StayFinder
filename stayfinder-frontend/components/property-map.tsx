@@ -6,6 +6,7 @@ interface PropertyMapProps {
 }
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 // Fix marker icon issue with leaflet in Next.js
