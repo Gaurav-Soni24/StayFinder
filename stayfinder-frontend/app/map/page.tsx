@@ -263,7 +263,11 @@ export default function MapPage() {
                           <Button
                             size="sm"
                             className="mt-2"
-                            onClick={() => (window.location.href = `/listings/${listing.id}`)}
+                            onClick={() => {
+  if (typeof window !== "undefined") {
+    window.location.href = `/listings/${listing.id}`;
+  }
+}}
                           >
                             View Details
                           </Button>
@@ -309,7 +313,11 @@ export default function MapPage() {
                   <Button
                     size="sm"
                     className="mt-2"
-                    onClick={() => (window.location.href = `/listings/${selectedListing.id}`)}
+                    onClick={() => {
+  if (typeof window !== "undefined") {
+    window.location.href = `/listings/${selectedListing.id}`;
+  }
+}}
                   >
                     View Details
                   </Button>
