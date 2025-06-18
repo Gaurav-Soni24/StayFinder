@@ -5,6 +5,8 @@ const MapComponent = dynamic(() => import("./MapComponent"), {
 });
 
 export default function MapPage() {
+  return <MapComponent />;
+}
   const [listings, setListings] = useState<Listing[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [selectedListing, setSelectedListing] = useState<Listing | null>(null)
