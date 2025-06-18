@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 console.log('Loaded .env, MONGODB_URI:', process.env.MONGODB_URI);
+if (!process.env.MONGODB_URI) {
+  console.error('MONGODB_URI is not set!');
+}
+
 
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
@@ -19,19 +23,26 @@ app.use(express.json());
 
 // Root route
 app.get("/", (req, res) => {
+  console.log("Received request for /");
   res.json({ status: "OK", message: "Welcome to the StayFinder API!" });
 });
 
 // Health check endpoint (works even if DB is down)
 app.get("/api/health", (req, res) => {
+  console.log("Received request for /api/health");
   res.json({ status: "OK", message: "StayFinder API is running" });
 });
 
 // Serverless-safe MongoDB connection
 let isConnected = false;
 async function connectToDatabase() {
-  if (isConnected || mongoose.connection.readyState === 1) return;
+  console.log('connectToDatabase called');
+  if (isConnected || mongoose.connection.readyState === 1) {
+    console.log('MongoDB already connected');
+    return;
+  }
   try {
+    console.log('Connecting to MongoDB...');
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
