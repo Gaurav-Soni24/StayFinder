@@ -43,8 +43,8 @@ async function connectToDatabase() {
   }
 }
 
-// Ensure DB connection before handling requests
-app.use(async (req, res, next) => {
+// Ensure DB connection only for /api/* routes
+app.use("/api", async (req, res, next) => {
   await connectToDatabase();
   next();
 });
