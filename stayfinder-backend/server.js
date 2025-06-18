@@ -17,6 +17,11 @@ app.use(cors({ origin: true, credentials: true }));
 app.options('*', cors({ origin: true, credentials: true }));
 app.use(express.json());
 
+// Root route
+app.get("/", (req, res) => {
+  res.json({ status: "OK", message: "Welcome to the StayFinder API!" });
+});
+
 // Health check endpoint (works even if DB is down)
 app.get("/api/health", (req, res) => {
   res.json({ status: "OK", message: "StayFinder API is running" });
