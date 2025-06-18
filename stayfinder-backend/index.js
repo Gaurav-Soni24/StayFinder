@@ -1,4 +1,5 @@
-
+console.log('Starting StayFinder backend...');
+const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
@@ -6,7 +7,6 @@ console.log('Loaded .env, MONGODB_URI:', process.env.MONGODB_URI);
 if (!process.env.MONGODB_URI) {
   console.error('MONGODB_URI is not set!');
 }
-
 
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
